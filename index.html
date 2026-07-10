@@ -12,25 +12,25 @@
     <style>
         :root {
             /* Hệ màu tươi sáng từ khu vườn cúc họa mi nắng ấm */
-            --forest-green: #11261B; /* Lục thẫm cho độ tương phản chữ tuyệt đối */
+            --forest-green: #11261B; /* Tông lục tối để hiển thị chữ rõ nét trong các khối glass */
             --leaf-green: #244A30;   /* Tông lục đậm cho tiêu đề phụ */
             --sky-blue: #1E3A8A;     /* Xanh dương đậm tương phản sắc sảo */
-            --daisy-pink: #D07B7B;   /* Hồng cúc cosmos sậm nhẹ */
+            --daisy-pink: #E89F9F;   /* Hồng cúc cosmos ấm áp */
             --pale-pink: #FFF0F2;
             --sun-yellow: #D9A02B;   /* Vàng ấm đậm đà */
             --pure-white: #FFFFFF;
             
-            /* Bo góc nhộng (capsule) mềm mại */
+            /* Bo góc nhộng (capsule) thiên nhiên mềm mại */
             --capsule-radius: 50px;
             --card-radius: 28px;
             
-            /* ĐẶC BIỆT: Công thức kính mờ đục cao cấp (Frosted Glass) */
-            --glass-bg: rgba(255, 255, 255, 0.48); 
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --glass-blur: blur(35px) saturate(120%);
+            /* KHỐI GLASS TRONG SUỐT HƠN: Giảm opacity xuống 0.38 để tăng độ trong suốt */
+            --glass-bg: rgba(255, 255, 255, 0.38); 
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-blur: blur(25px) saturate(120%);
             
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow: 0 15px 45px rgba(11, 25, 17, 0.12);
+            --shadow: 0 15px 40px rgba(11, 25, 17, 0.12);
         }
 
         * {
@@ -42,17 +42,26 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--forest-green);
-            
-            /* Thiết lập hình nền khu vườn daisy nắng ấm phủ toàn trang */
-            background-image: url('back.jpg');
+            background-color: #0c1a12;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* LỚP LÀM TỐI NỀN ĐI 10%: Phủ lớp overlay tối màu trực tiếp lên hình nền back.jpg */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('back.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
+            z-index: -2;
         }
 
         /* Hiệu ứng cánh hoa rơi nhẹ lãng mạn */
@@ -102,7 +111,7 @@
             }
         }
 
-        /* Thanh Menu Điều Hướng Dạng Nhộng mờ sương đục */
+        /* Thanh Menu Điều Hướng Dạng Nhộng mờ sương trong suốt hơn */
         header {
             position: fixed;
             top: 20px;
@@ -127,7 +136,7 @@
         header.scrolled {
             top: 10px;
             padding: 10px 30px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.6);
             border-color: rgba(255, 255, 255, 0.8);
         }
 
@@ -216,18 +225,15 @@
         }
 
         .hero-tag {
-            background: rgba(79, 121, 86, 0.12);
-            color: var(--leaf-green);
+            background: rgba(79, 121, 86, 0.15);
+            color: var(--forest-green);
             padding: 8px 18px;
             border-radius: var(--capsule-radius);
             width: fit-content;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
-            border: 1px solid rgba(79, 121, 86, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         /* Chữ hiển thị đậm, tối ưu độ tương phản rõ rệt */
@@ -266,8 +272,8 @@
         }
 
         .meta-tag {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             padding: 10px 20px;
             border-radius: var(--capsule-radius);
             font-size: 0.85rem;
@@ -354,20 +360,22 @@
             gap: 12px;
         }
 
+        /* CHỮ NGOÀI NỀN: Đổi sang màu trắng tinh khiết để hiển thị xuất sắc trên nền hoa lá */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--forest-green);
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
+            color: var(--pure-white);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
         }
 
         .section-subtitle {
-            color: var(--leaf-green);
+            color: var(--daisy-pink);
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 2.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         /* Section Giới thiệu (About) */
@@ -384,9 +392,11 @@
             gap: 22px;
         }
 
+        /* CHỮ NGOÀI NỀN: Chuyển sang màu trắng cùng bóng đổ mịn, đọc cực kỳ sắc sảo và lôi cuốn */
         .about-text p {
             font-size: 1.05rem;
-            color: var(--forest-green);
+            color: var(--pure-white);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
             text-align: justify;
             line-height: 1.75;
             font-weight: 600;
@@ -411,7 +421,7 @@
 
         .about-card:hover {
             transform: translateY(-5px);
-            border-color: var(--daisy-pink);
+            border-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 15px 35px rgba(79, 121, 86, 0.15);
         }
 
@@ -612,14 +622,17 @@
             backdrop-filter: blur(10px);
         }
 
+        /* SỬA LỖI MẤT SỐ: Di chuyển tọa độ vào sâu bên trong thẻ để số hiển thị nguyên vẹn */
         .visual-accent-1 {
             position: absolute;
-            top: -25px;
-            right: -20px;
-            font-size: 6rem;
-            opacity: 0.12;
+            top: 10px;
+            right: 15px; 
+            font-size: 5rem;
+            opacity: 0.15;
             font-family: 'Playfair Display', serif;
             color: var(--leaf-green);
+            pointer-events: none;
+            line-height: 1;
         }
 
         .visual-card {
@@ -713,9 +726,11 @@
             gap: 22px;
         }
 
+        /* CHỮ NGOÀI NỀN: Đổi sang màu trắng tăng tính chân thực và rõ rệt học thuật */
         .reflection-essay p {
             font-size: 1.05rem;
-            color: var(--forest-green);
+            color: var(--pure-white);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
             text-align: justify;
             line-height: 1.75;
             font-weight: 600;
@@ -739,7 +754,7 @@
         }
 
         .stat-box:hover {
-            border-color: var(--leaf-green);
+            border-color: rgba(255, 255, 255, 0.9);
             transform: scale(1.02);
         }
 
