@@ -11,7 +11,7 @@
     
     <style>
         :root {
-            /* Hệ màu lấy chính xác từ ảnh mẫu phối màu của bạn */
+            /* Hệ màu hoàng hôn dịu nhẹ */
             --midnight-blue: #0F1D36;
             --slate-blue: #26425A;
             --steel-blue: #86A8CF;
@@ -19,10 +19,10 @@
             --dusty-rose: #C38EB4;
             --pure-white: #FFFFFF;
             
-            /* Cấu hình bóng đổ mịn và hiệu ứng bo góc nhộng (capsule) như ảnh mẫu */
+            /* Cấu hình bo góc nhộng (capsule) thanh lịch */
             --capsule-radius: 50px;
             --card-radius: 30px;
-            --glass-bg: rgba(15, 29, 54, 0.65);
+            --glass-bg: rgba(15, 29, 54, 0.7); /* Tăng nhẹ độ che phủ để dễ đọc chữ trên nền ảnh */
             --glass-border: rgba(134, 168, 207, 0.25);
             --text-glow: 0 0 15px rgba(225, 203, 215, 0.3);
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,16 +37,14 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--pure-white);
-            /* Gradient nền dọc chuyển sắc mượt mà y hệt như ảnh mẫu */
-            background: linear-gradient(180deg, 
-                #0F1D36 0%, 
-                #26425A 25%, 
-                #86A8CF 50%, 
-                #E1CBD7 72%, 
-                #C38EB4 88%, 
-                #0F1D36 100%
-            );
-            background-attachment: scroll;
+            
+            /* Thiết lập hình nền back.jpg phủ toàn trang với hiệu ứng Parallax cố định */
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
@@ -73,7 +71,7 @@
             }
         }
 
-        /* Các đám mây màu mờ ảo trôi nhẹ ở nền để tăng tính mộng mơ */
+        /* Các đám mây màu mờ ảo trôi nhẹ trên nền ảnh để tăng tính mộng mơ */
         .ambient-glow {
             position: absolute;
             width: 100%;
@@ -89,7 +87,7 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.35;
+            opacity: 0.25; /* Giảm nhẹ độ mờ để không đè mất chi tiết của hình nền */
             animation: drift 15s ease-in-out infinite alternate;
         }
 
@@ -124,7 +122,7 @@
             100% { transform: translateY(50px) scale(1.15) rotate(10deg); }
         }
 
-        /* Thanh Menu Điều Hướng dạng nhộng tinh tế */
+        /* Thanh Menu Điều Hướng Dạng Nhộng (Capsule) */
         header {
             position: fixed;
             top: 20px;
@@ -133,7 +131,7 @@
             width: 90%;
             max-width: 1200px;
             padding: 12px 35px;
-            background: rgba(15, 29, 54, 0.7);
+            background: rgba(15, 29, 54, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
@@ -149,7 +147,7 @@
         header.scrolled {
             top: 10px;
             padding: 10px 30px;
-            background: rgba(15, 29, 54, 0.85);
+            background: rgba(15, 29, 54, 0.9);
             border-color: rgba(134, 168, 207, 0.4);
         }
 
@@ -186,7 +184,7 @@
             text-shadow: var(--text-glow);
         }
 
-        /* Nút liên kết Google Drive dạng nhộng (Capsule) */
+        /* Nút liên kết Google Drive dạng nhộng */
         .btn-drive {
             background: linear-gradient(135deg, var(--dusty-rose) 0%, var(--steel-blue) 100%);
             color: var(--pure-white);
@@ -229,28 +227,29 @@
         }
 
         .hero-tag {
-            background: rgba(195, 142, 180, 0.25);
-            color: var(--pale-pink);
+            background: rgba(195, 142, 180, 0.3);
+            color: var(--pure-white);
             padding: 8px 18px;
             border-radius: var(--capsule-radius);
             width: fit-content;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1.5px;
-            border: 1px solid rgba(225, 203, 215, 0.3);
+            border: 1px solid rgba(225, 203, 215, 0.35);
             display: flex;
             align-items: center;
             gap: 8px;
+            backdrop-filter: blur(5px);
         }
 
-        /* Tên sinh viên to nhất, nổi bật nhất theo yêu cầu */
+        /* Tên sinh viên hiển thị to nhất và nổi bật nhất */
         .hero-name {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3.2rem, 6.5vw, 5.2rem);
             font-weight: 700;
             line-height: 1.1;
             color: var(--pure-white);
-            text-shadow: 0 5px 25px rgba(15, 29, 54, 0.5);
+            text-shadow: 0 5px 30px rgba(15, 29, 54, 0.7);
         }
 
         .hero-name span {
@@ -270,9 +269,10 @@
 
         .hero-desc {
             font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
             line-height: 1.7;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero-meta {
@@ -283,7 +283,7 @@
         }
 
         .meta-tag {
-            background: rgba(15, 29, 54, 0.4);
+            background: rgba(15, 29, 54, 0.5);
             border: 1px solid var(--glass-border);
             padding: 10px 20px;
             border-radius: var(--capsule-radius);
@@ -308,7 +308,7 @@
             position: relative;
         }
 
-        /* Thẻ ảnh bo góc nhộng nhẹ nhàng lãng mạn */
+        /* Thẻ ảnh bo góc mềm mại */
         .hero-avatar-card {
             background: var(--glass-bg);
             padding: 20px;
@@ -318,7 +318,7 @@
             position: relative;
             transform: rotate(1.5deg);
             transition: var(--transition);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
 
         .hero-avatar-card:hover {
@@ -331,10 +331,8 @@
             height: 390px;
             object-fit: cover;
             border-radius: 30px;
-            filter: contrast(1.03) brightness(0.95);
         }
 
-        /* Băng keo dán mờ ảo */
         .tape {
             position: absolute;
             top: -12px;
@@ -348,7 +346,7 @@
             border-right: 1px dashed rgba(255,255,255,0.3);
         }
 
-        /* Section chung */
+        /* Các mục Section */
         .section {
             padding: 110px 8%;
             max-width: 1400px;
@@ -370,7 +368,7 @@
             font-size: 2.8rem;
             font-weight: 700;
             color: var(--pure-white);
-            text-shadow: 0 4px 15px rgba(15, 29, 54, 0.3);
+            text-shadow: 0 4px 15px rgba(15, 29, 54, 0.5);
         }
 
         .section-subtitle {
@@ -379,6 +377,7 @@
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 2.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         /* Section Giới thiệu (About) */
@@ -397,9 +396,10 @@
 
         .about-text p {
             font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             text-align: justify;
             line-height: 1.7;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         .about-cards {
@@ -412,7 +412,7 @@
             background: var(--glass-bg);
             padding: 28px;
             border-radius: var(--card-radius);
-            box-shadow: 0 10px 30px rgba(15, 29, 54, 0.3);
+            box-shadow: 0 10px 30px rgba(15, 29, 54, 0.4);
             border: 1px solid var(--glass-border);
             transition: var(--transition);
             backdrop-filter: blur(15px);
@@ -421,7 +421,7 @@
         .about-card:hover {
             transform: translateY(-5px);
             border-color: var(--dusty-rose);
-            box-shadow: 0 15px 35px rgba(195, 142, 180, 0.2);
+            box-shadow: 0 15px 35px rgba(195, 142, 180, 0.3);
         }
 
         .about-card-icon {
@@ -439,20 +439,20 @@
 
         .about-card-desc {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.5;
         }
 
         /* Banner kêu gọi hành động Google Drive trước phần Bài tập */
         .cta-banner {
-            background: rgba(15, 29, 54, 0.55);
+            background: rgba(15, 29, 54, 0.65);
             border: 1px solid var(--glass-border);
             border-radius: var(--card-radius);
             padding: 45px;
             text-align: center;
             margin: 40px auto 70px auto;
             max-width: 950px;
-            box-shadow: 0 15px 45px rgba(15, 29, 54, 0.4);
+            box-shadow: 0 15px 45px rgba(15, 29, 54, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -483,9 +483,9 @@
             margin-bottom: 45px;
         }
 
-        /* Nút chọn Tab phong cách nhộng thon dài thanh lịch */
+        /* Nút chọn Tab */
         .tab-btn {
-            background: rgba(15, 29, 54, 0.5);
+            background: rgba(15, 29, 54, 0.6);
             border: 1px solid var(--glass-border);
             color: var(--pale-pink);
             padding: 12px 26px;
@@ -563,7 +563,7 @@
         }
 
         .assignment-desc {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 1.05rem;
             text-align: justify;
             line-height: 1.7;
@@ -599,9 +599,9 @@
             color: var(--pale-pink);
         }
 
-        /* Khung visual bên phải của Bài tập (style nhộng mờ ảo) */
+        /* Khung visual của bài tập */
         .assignment-visual {
-            background: rgba(15, 29, 54, 0.4);
+            background: rgba(15, 29, 54, 0.45);
             border-radius: var(--card-radius);
             padding: 35px;
             border: 1px dashed var(--glass-border);
@@ -644,11 +644,11 @@
 
         .visual-card-desc {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.5;
         }
 
-        /* Định dạng bảng khảo sát bài 2 (hợp nhất style tối giản) */
+        /* Bảng tài liệu bài 2 */
         .sources-table {
             width: 100%;
             border-collapse: collapse;
@@ -660,7 +660,7 @@
             border: 1px solid rgba(134, 168, 207, 0.2);
             padding: 8px;
             text-align: left;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .sources-table th {
@@ -713,7 +713,7 @@
 
         .reflection-essay p {
             font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             text-align: justify;
             line-height: 1.7;
         }
@@ -758,7 +758,7 @@
 
         .stat-desc {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             line-height: 1.4;
         }
 
@@ -843,7 +843,7 @@
                 width: 95%;
             }
             nav {
-                display: none; /* Ẩn menu điều hướng trên thiết bị di động để giữ thẩm mỹ tối giản */
+                display: none;
             }
             .section {
                 padding: 70px 5%;
@@ -856,7 +856,7 @@
 </head>
 <body>
 
-    <!-- Đám mây màu hoàng hôn trôi lơ lửng -->
+    <!-- Đám mây màu hoàng hôn trôi nhẹ mờ ảo trên back.jpg -->
     <div class="ambient-glow">
         <div class="drift glow-cloud cloud-1"></div>
         <div class="drift glow-cloud cloud-2"></div>
@@ -882,7 +882,7 @@
             <div class="hero-tag">
                 <span>⭐</span> HỌC PHẦN CÔNG NGHỆ SỐ & AI
             </div>
-            <!-- Tên sinh viên hiển thị to nhất, nổi bật nhất hoàng hôn -->
+            <!-- Tên sinh viên hiển thị to nhất, nổi bật nhất -->
             <h1 class="hero-name">
                 Hán Nguyễn<br><span>Thuỳ Dung</span>
             </h1>
@@ -981,7 +981,7 @@
             <button class="tab-btn" onclick="switchTab(event, 'assignment-6')">Bài 6: AI trách nhiệm</button>
         </div>
 
-        <!-- Khung hiển thị nội dung hoàng hôn -->
+        <!-- Khung hiển thị nội dung -->
         <div class="assignment-display">
             
             <!-- Bài 1 -->
@@ -1092,7 +1092,7 @@
                     <span class="visual-accent-1">03</span>
                     <div class="visual-card">
                         <div class="visual-card-title">Cấu trúc Prompt nâng cao tối ưu:</div>
-                        <div class="visual-card-desc" style="font-size: 0.8rem; line-height: 1.4;">
+                        <div class="visual-card-desc" style="font-size: 0.8rem; line-height: 1.45;">
                             1. <strong>Role Prompting:</strong> "Bạn là giáo viên CNTT/Giảng viên Môi trường..."<br>
                             2. <strong>Bối cảnh & Tác vụ:</strong> Giải thích khái niệm/Tóm tắt tài liệu học thuật.<br>
                             3. <strong>Yêu cầu cấu trúc:</strong> Trình bày theo từng bước, có ví dụ cụ thể.<br>
@@ -1252,11 +1252,10 @@
         </div>
     </footer>
 
-    <!-- Các kịch bản chuyển động tương tác theo style hoàng hôn mộc mạc -->
+    <!-- Các kịch bản chuyển động tương tác đẹp mắt -->
     <script>
-        // Hiệu ứng các hạt sao hoàng hôn lấp lánh nhẹ nhàng khi di chuột
+        // Hiệu ứng các hạt sao lấp lánh nhẹ nhàng khi di chuột
         document.addEventListener('mousemove', function(e) {
-            // Giới hạn tần suất sinh hạt để duy trì hiệu năng tốt nhất
             if (Math.random() > 0.18) return;
 
             const sparkle = document.createElement('div');
@@ -1266,7 +1265,7 @@
             sparkle.style.left = e.pageX + 'px';
             sparkle.style.top = e.pageY + 'px';
             
-            // Màu sắc hạt lấy trực tiếp từ palette màu hoàng hôn trong ảnh mẫu
+            // Màu sắc hạt lấy trực tiếp từ palette màu hoàng hôn mộc mạc
             const colors = ['#C38EB4', '#E1CBD7', '#86A8CF', '#26425A'];
             sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
             
@@ -1278,7 +1277,6 @@
             
             document.body.appendChild(sparkle);
             
-            // Tự động xóa hạt sau khi hoạt ảnh hoàn tất
             setTimeout(() => {
                 sparkle.remove();
             }, 1200);
@@ -1294,27 +1292,23 @@
             }
         });
 
-        // Xử lý logic chuyển đổi Tab bài tập
+        // Xử logic chuyển đổi Tab bài tập
         function switchTab(event, tabId) {
-            // Ẩn tất cả nội dung bài tập đang hiển thị
             const contents = document.querySelectorAll('.assignment-content');
             contents.forEach(content => {
                 content.classList.remove('active');
             });
 
-            // Bỏ trạng thái kích hoạt của tất cả các nút
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // Hiển thị nội dung bài tập được nhấp chọn
             const targetContent = document.getElementById(tabId);
             if (targetContent) {
                 targetContent.classList.add('active');
             }
 
-            // Gắn trạng thái hoạt động cho nút hiện hành
             event.currentTarget.classList.add('active');
         }
     </script>
