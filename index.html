@@ -12,23 +12,25 @@
     <style>
         :root {
             /* Hệ màu tươi sáng từ khu vườn cúc họa mi nắng ấm */
-            --forest-green: #12291B; /* Tông lục tối để hiển thị chữ cực kỳ rõ ràng */
-            --leaf-green: #2B542C;   /* Tông lục đậm cho các tiêu đề phụ */
-            --sky-blue: #2B547E;     /* Tông xanh dương đậm phối màu tương phản cao */
-            --daisy-pink: #E08E8E;   /* Hồng cúc cosmos sậm màu hơn để dễ nhìn */
+            --forest-green: #11261B; /* Lục thẫm cho độ tương phản chữ tuyệt đối */
+            --leaf-green: #244A30;   /* Tông lục đậm cho tiêu đề phụ */
+            --sky-blue: #1E3A8A;     /* Xanh dương đậm tương phản sắc sảo */
+            --daisy-pink: #D07B7B;   /* Hồng cúc cosmos sậm nhẹ */
             --pale-pink: #FFF0F2;
-            --sun-yellow: #E5B33C;   /* Vàng ấm đậm đà hơn */
+            --sun-yellow: #D9A02B;   /* Vàng ấm đậm đà */
             --pure-white: #FFFFFF;
             
-            /* Bo góc nhộng (capsule) thiên nhiên mềm mại */
+            /* Bo góc nhộng (capsule) mềm mại */
             --capsule-radius: 50px;
-            --card-radius: 30px;
+            --card-radius: 28px;
             
-            /* Đổi sang hiệu ứng glass mờ đục cao để che lấp hoa văn ảnh nền, tối ưu tương phản */
-            --glass-bg: rgba(255, 255, 255, 0.96); 
-            --glass-border: rgba(79, 121, 86, 0.25);
+            /* ĐẶC BIỆT: Công thức kính mờ đục cao cấp (Frosted Glass) */
+            --glass-bg: rgba(255, 255, 255, 0.48); 
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-blur: blur(35px) saturate(120%);
+            
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow: 0 15px 40px rgba(18, 41, 27, 0.12);
+            --shadow: 0 15px 45px rgba(11, 25, 17, 0.12);
         }
 
         * {
@@ -79,7 +81,7 @@
             }
         }
 
-        /* Hiệu ứng cánh hoa lấp lánh (🌸, 🌼) bay theo con trỏ chuột */
+        /* Hiệu ứng hoa lấp lánh bay theo trỏ chuột */
         .sparkle {
             position: absolute;
             pointer-events: none;
@@ -100,7 +102,7 @@
             }
         }
 
-        /* Thanh Menu Điều Hướng Dạng Nhộng mờ đục cao */
+        /* Thanh Menu Điều Hướng Dạng Nhộng mờ sương đục */
         header {
             position: fixed;
             top: 20px;
@@ -109,9 +111,9 @@
             width: 90%;
             max-width: 1200px;
             padding: 12px 35px;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border);
             border-radius: var(--capsule-radius);
             z-index: 1000;
@@ -125,8 +127,8 @@
         header.scrolled {
             top: 10px;
             padding: 10px 30px;
-            background: rgba(255, 255, 255, 0.98);
-            border-color: rgba(79, 121, 86, 0.35);
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .logo {
@@ -192,22 +194,23 @@
             display: flex;
             align-items: center;
             padding: 160px 8% 80px 8%;
-            gap: 5%;
-            max-width: 1400px;
+            gap: 4%;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
-        /* Thêm hiệu ứng glass mờ đục toàn diện cho toàn bộ phần văn bản giới thiệu ở Hero */
+        /* ÉP BỐ CỤC: Thu hẹp cột thông tin bên trái để mở rộng không gian cho ảnh */
         .hero-content {
-            flex: 1.25;
+            flex: 0.75;
+            max-width: 460px;
             display: flex;
             flex-direction: column;
             gap: 24px;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border);
-            padding: 45px;
+            padding: 40px;
             border-radius: var(--card-radius);
             box-shadow: var(--shadow);
         }
@@ -227,10 +230,10 @@
             gap: 8px;
         }
 
-        /* Chữ hiển thị đậm, rõ nét hoàn toàn, loại bỏ gradient gây nhòe */
+        /* Chữ hiển thị đậm, tối ưu độ tương phản rõ rệt */
         .hero-name {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 5vw, 4.3rem);
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
             font-weight: 700;
             line-height: 1.2;
             color: var(--forest-green);
@@ -238,13 +241,10 @@
 
         .hero-name span {
             color: var(--sky-blue);
-            background: none;
-            -webkit-background-clip: unset;
-            -webkit-text-fill-color: unset;
         }
 
         .hero-title {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--leaf-green);
             font-family: 'Playfair Display', serif;
@@ -252,23 +252,22 @@
         }
 
         .hero-desc {
-            font-size: 1.05rem;
-            color: #2D3E33; /* Tăng độ đậm để đọc cực kỳ dễ dàng */
-            max-width: 650px;
-            line-height: 1.7;
-            font-weight: 500;
+            font-size: 0.98rem;
+            color: var(--forest-green);
+            line-height: 1.65;
+            font-weight: 600;
         }
 
         .hero-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 10px;
         }
 
         .meta-tag {
-            background: var(--pure-white);
-            border: 1px solid rgba(79, 121, 86, 0.2);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             padding: 10px 20px;
             border-radius: var(--capsule-radius);
             font-size: 0.85rem;
@@ -277,57 +276,65 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            width: fit-content;
         }
 
         .meta-tag span {
             color: var(--daisy-pink);
         }
 
+        /* PHẦN ẢNH: Mở rộng diện tích để hiển thị ảnh ngang Full Size lộng lẫy */
         .hero-image-wrapper {
-            flex: 0.75;
+            flex: 1.25;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            width: 100%;
         }
 
-        /* Thẻ ảnh bo góc mềm mại mờ đục */
+        /* Thẻ ảnh ngang bo góc nhẹ mờ sương đục */
         .hero-avatar-card {
-            background: rgba(255, 255, 255, 0.94);
-            padding: 20px;
-            border-radius: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            padding: 16px;
+            border-radius: var(--card-radius);
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
             position: relative;
-            transform: rotate(1.5deg);
+            transform: rotate(1deg);
             transition: var(--transition);
-            backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 680px; /* Định hình khung ngang */
         }
 
         .hero-avatar-card:hover {
             transform: rotate(0deg) scale(1.02);
-            border-color: var(--leaf-green);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
+        /* Hiển thị Full Size trọn vẹn khung tranh hoa cúc */
         .hero-avatar {
-            width: 290px;
-            height: 390px;
-            object-fit: cover;
-            border-radius: 30px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: auto;
+            border-radius: 18px;
+            display: block;
         }
 
         .tape {
             position: absolute;
             top: -12px;
             left: 50%;
-            transform: translateX(-50%) rotate(-3deg);
+            transform: translateX(-50%) rotate(-1.5deg);
             width: 130px;
             height: 32px;
-            background-color: rgba(79, 121, 86, 0.15);
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(4px);
-            border-left: 1px dashed rgba(255, 255, 255, 0.5);
-            border-right: 1px dashed rgba(255, 255, 255, 0.5);
+            border-left: 1px dashed rgba(255, 255, 255, 0.6);
+            border-right: 1px dashed rgba(255, 255, 255, 0.6);
         }
 
         /* Các mục Section */
@@ -382,8 +389,7 @@
             color: var(--forest-green);
             text-align: justify;
             line-height: 1.75;
-            font-weight: 500;
-            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.4);
+            font-weight: 600;
         }
 
         .about-cards {
@@ -394,12 +400,13 @@
 
         .about-card {
             background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             padding: 28px;
             border-radius: var(--card-radius);
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
             transition: var(--transition);
-            backdrop-filter: blur(15px);
         }
 
         .about-card:hover {
@@ -423,14 +430,16 @@
 
         .about-card-desc {
             font-size: 0.9rem;
-            color: #2D3E33;
+            color: var(--forest-green);
             line-height: 1.5;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Banner kêu gọi hành động Google Drive trước phần Bài tập */
         .cta-banner {
-            background: rgba(255, 255, 255, 0.96);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border);
             border-radius: var(--card-radius);
             padding: 45px;
@@ -442,7 +451,6 @@
             flex-direction: column;
             align-items: center;
             gap: 18px;
-            backdrop-filter: blur(25px);
         }
 
         .cta-banner h3 {
@@ -457,7 +465,7 @@
             max-width: 650px;
             line-height: 1.6;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Section Bài tập / Dự án cá nhân */
@@ -469,9 +477,11 @@
             margin-bottom: 45px;
         }
 
-        /* Nút chọn Tab thon dài dạng nhộng mờ đục cao */
+        /* Nút chọn Tab */
         .tab-btn {
-            background: rgba(255, 255, 255, 0.94);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border);
             color: var(--leaf-green);
             padding: 12px 26px;
@@ -481,7 +491,6 @@
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
-            backdrop-filter: blur(15px);
             box-shadow: var(--shadow);
         }
 
@@ -502,13 +511,14 @@
         /* Khung hiển thị nội dung bài tập */
         .assignment-display {
             background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border-radius: 40px;
             padding: 50px;
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
             min-height: 500px;
             transition: var(--transition);
-            backdrop-filter: blur(25px);
         }
 
         .assignment-content {
@@ -549,11 +559,11 @@
         }
 
         .assignment-desc {
-            color: #2D3E33;
+            color: var(--forest-green);
             font-size: 1.05rem;
             text-align: justify;
             line-height: 1.7;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .assignment-highlights {
@@ -579,7 +589,7 @@
             font-size: 0.95rem;
             color: var(--forest-green);
             line-height: 1.6;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .highlight-text strong {
@@ -589,7 +599,7 @@
 
         /* Khung visual của bài tập */
         .assignment-visual {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: var(--card-radius);
             padding: 35px;
             border: 1px dashed var(--glass-border);
@@ -634,7 +644,7 @@
             font-size: 0.85rem;
             color: var(--forest-green);
             line-height: 1.5;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Bảng tài liệu bài 2 */
@@ -646,7 +656,7 @@
         }
 
         .sources-table th, .sources-table td {
-            border: 1px solid rgba(79, 121, 86, 0.2);
+            border: 1px solid rgba(79, 121, 86, 0.15);
             padding: 8px;
             text-align: left;
             color: var(--forest-green);
@@ -683,11 +693,12 @@
             max-width: 1050px;
             margin: 0 auto;
             background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border-radius: 40px;
             padding: 55px;
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(25px);
         }
 
         .reflection-grid {
@@ -707,8 +718,7 @@
             color: var(--forest-green);
             text-align: justify;
             line-height: 1.75;
-            font-weight: 500;
-            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.4);
+            font-weight: 600;
         }
 
         .reflection-stats {
@@ -719,7 +729,7 @@
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             padding: 28px;
             border-radius: var(--card-radius);
             border: 1px solid var(--glass-border);
@@ -753,7 +763,7 @@
             font-size: 0.85rem;
             color: var(--forest-green);
             line-height: 1.4;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Chân trang */
@@ -804,7 +814,7 @@
         /* Thích ứng thiết bị di động */
         @media (max-width: 991px) {
             .hero {
-                flex-direction: column;
+                flex-direction: column-reverse; /* Đưa ảnh ngang lên trên đầu ở màn di động để thẩm mỹ hơn */
                 text-align: center;
                 padding-top: 150px;
                 gap: 55px;
@@ -812,6 +822,7 @@
 
             .hero-content {
                 align-items: center;
+                max-width: 100%;
             }
 
             .hero-desc {
@@ -868,12 +879,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Áp dụng glassmorphism mờ đục cho khung bao bọc thông tin Hero để dễ đọc chữ -->
+        <!-- Áp dụng glassmorphism hoàng hôn mờ sương đục cho khung bao bọc thông tin Hero -->
         <div class="hero-content">
             <div class="hero-tag">
                 <span>🌸</span> HỌC PHẦN CÔNG NGHỆ SỐ & AI
             </div>
-            <!-- Tên sinh viên hiển thị to nhất, nổi bật nhất và có màu tương phản cao hoàn toàn -->
+            <!-- Tên hiển thị to, rõ nét thẫm màu nổi bật -->
             <h1 class="hero-name">
                 Hán Nguyễn<br><span>Thuỳ Dung</span>
             </h1>
@@ -898,7 +909,7 @@
         <div class="hero-image-wrapper">
             <div class="hero-avatar-card">
                 <div class="tape"></div>
-                <!-- Avatar sử dụng đúng cú pháp được yêu cầu -->
+                <!-- Avatar hiển thị Full Size ngang không bị xén tỉ lệ dọc -->
                 <img src="Hình 1.jpg" alt="Avatar Hán Nguyễn Thuỳ Dung" class="hero-avatar">
             </div>
         </div>
