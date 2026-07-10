@@ -12,9 +12,9 @@
     <style>
         :root {
             /* Hệ màu tươi sáng từ khu vườn cúc họa mi nắng ấm */
-            --forest-green: #1A3324;
-            --leaf-green: #4F7956;
-            --sky-blue: #4FA3D1;
+            --forest-green: #163020;
+            --leaf-green: #3A6344;
+            --sky-blue: #3A89C9;
             --daisy-pink: #F5B3B3;
             --pale-pink: #FFF0F2;
             --sun-yellow: #F5D061;
@@ -23,11 +23,12 @@
             /* Bo góc nhộng (capsule) thiên nhiên mềm mại */
             --capsule-radius: 50px;
             --card-radius: 30px;
-            --glass-bg: rgba(255, 255, 255, 0.85); /* Kính mờ sáng như sương ban mai */
-            --glass-border: rgba(79, 121, 86, 0.15);
-            --text-glow: 0 0 10px rgba(79, 121, 86, 0.15);
+            
+            /* Hiệu ứng Kính Mờ Đồng Nhất (Uniform Glassmorphism) */
+            --glass-bg: rgba(255, 255, 255, 0.82); /* Kính mờ sáng phủ sương ban mai có độ tương phản cao */
+            --glass-border: rgba(255, 255, 255, 0.45);
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow: 0 12px 35px rgba(26, 51, 36, 0.08);
+            --shadow: 0 15px 45px rgba(22, 48, 32, 0.12);
         }
 
         * {
@@ -52,7 +53,7 @@
             min-height: 100vh;
         }
 
-        /* Hiệu ứng hoa rơi rực rỡ từ trên đỉnh trang web */
+        /* Hiệu ứng hoa rơi rải rác tự động */
         .petal {
             position: absolute;
             pointer-events: none;
@@ -78,7 +79,7 @@
             }
         }
 
-        /* Hiệu ứng cánh hoa lấp lánh (🌸, 🌼) bay theo con trỏ chuột */
+        /* Hiệu ứng cánh hoa lấp lánh bay theo con trỏ chuột */
         .sparkle {
             position: absolute;
             pointer-events: none;
@@ -99,7 +100,7 @@
             }
         }
 
-        /* Thanh Menu Điều Hướng Dạng Nhộng mờ sương */
+        /* Thanh Menu Điều Hướng Dạng Nhộng mờ sương (Glassmorphic) */
         header {
             position: fixed;
             top: 20px;
@@ -108,9 +109,9 @@
             width: 90%;
             max-width: 1200px;
             padding: 12px 35px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: var(--capsule-radius);
             z-index: 1000;
@@ -125,7 +126,7 @@
             top: 10px;
             padding: 10px 30px;
             background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(79, 121, 86, 0.3);
+            border-color: rgba(79, 121, 86, 0.35);
         }
 
         .logo {
@@ -150,7 +151,7 @@
         nav a {
             text-decoration: none;
             color: var(--leaf-green);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
@@ -167,7 +168,7 @@
             color: var(--pure-white);
             padding: 10px 24px;
             border-radius: var(--capsule-radius);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             border: none;
             cursor: pointer;
@@ -191,13 +192,21 @@
             display: flex;
             align-items: center;
             padding: 160px 8% 80px 8%;
-            gap: 6%;
+            gap: 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .hero-content {
-            flex: 1.2;
+        /* Hộp Kính Mờ (Hero Glass Card) bao bọc toàn bộ nội dung chữ bên trái để dễ đọc hơn */
+        .hero-text-card {
+            flex: 1.25;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 45px;
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
             gap: 24px;
@@ -216,17 +225,15 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(5px);
         }
 
-        /* Tên sinh viên hiển thị to nhất và nổi bật nhất trong nắng */
+        /* Tên sinh viên hiển thị to nhất, nổi bật nhất và sắc sảo nhất */
         .hero-name {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3.2rem, 6.5vw, 5.2rem);
+            font-size: clamp(3.2rem, 6.5vw, 4.8rem);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.15;
             color: var(--forest-green);
-            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.5);
         }
 
         .hero-name span {
@@ -238,7 +245,7 @@
 
         .hero-title {
             font-size: 1.35rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--leaf-green);
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -247,32 +254,30 @@
         .hero-desc {
             font-size: 1.05rem;
             color: var(--forest-green);
-            max-width: 600px;
             line-height: 1.7;
             font-weight: 500;
-            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.6);
+            text-align: justify;
         }
 
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 5px;
         }
 
         .meta-tag {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(79, 121, 86, 0.15);
             padding: 10px 20px;
             border-radius: var(--capsule-radius);
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--leaf-green);
             display: flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 15px rgba(22, 48, 32, 0.04);
         }
 
         .meta-tag span {
@@ -280,14 +285,14 @@
         }
 
         .hero-image-wrapper {
-            flex: 0.8;
+            flex: 0.75;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
         }
 
-        /* Thẻ ảnh bo góc mềm mại */
+        /* Thẻ ảnh bo góc mềm mại hiệu ứng kính mờ đồng bộ */
         .hero-avatar-card {
             background: var(--glass-bg);
             padding: 20px;
@@ -297,7 +302,8 @@
             position: relative;
             transform: rotate(1.5deg);
             transition: var(--transition);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .hero-avatar-card:hover {
@@ -367,6 +373,13 @@
         }
 
         .about-text {
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             display: flex;
             flex-direction: column;
             gap: 22px;
@@ -378,7 +391,6 @@
             text-align: justify;
             line-height: 1.7;
             font-weight: 500;
-            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5);
         }
 
         .about-cards {
@@ -394,7 +406,8 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
             transition: var(--transition);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .about-card:hover {
@@ -437,7 +450,8 @@
             flex-direction: column;
             align-items: center;
             gap: 18px;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .cta-banner h3 {
@@ -472,7 +486,7 @@
             padding: 12px 26px;
             border-radius: var(--capsule-radius);
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
@@ -489,7 +503,7 @@
         .tab-btn.active {
             background: linear-gradient(135deg, var(--leaf-green) 0%, var(--sky-blue) 100%);
             color: var(--pure-white);
-            font-weight: 600;
+            font-weight: 700;
             border-color: transparent;
             box-shadow: 0 8px 25px rgba(79, 121, 86, 0.25);
         }
@@ -504,6 +518,7 @@
             min-height: 500px;
             transition: var(--transition);
             backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .assignment-content {
@@ -683,6 +698,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .reflection-grid {
@@ -703,7 +719,6 @@
             text-align: justify;
             line-height: 1.7;
             font-weight: 500;
-            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.4);
         }
 
         .reflection-stats {
@@ -714,13 +729,14 @@
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             padding: 28px;
             border-radius: var(--card-radius);
             border: 1px solid var(--glass-border);
             text-align: center;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            backdrop-filter: blur(15px);
         }
 
         .stat-box:hover {
@@ -863,11 +879,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
+        <!-- Hộp Kính Mờ (Glass Card) lớn bọc bên ngoài nội dung để tăng độ hiển thị xuất sắc -->
+        <div class="hero-text-card">
             <div class="hero-tag">
                 <span>🌸</span> HỌC PHẦN CÔNG NGHỆ SỐ & AI
             </div>
-            <!-- Tên sinh viên hiển thị to nhất, nổi bật nhất -->
+            <!-- Tên sinh viên hiển thị to nhất, nổi bật và rõ ràng nhất -->
             <h1 class="hero-name">
                 Hán Nguyễn<br><span>Thuỳ Dung</span>
             </h1>
