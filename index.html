@@ -15,7 +15,7 @@
             --forest-green: #11261B; /* Tông lục tối để hiển thị chữ rõ nét trong các khối glass */
             --leaf-green: #244A30;   /* Tông lục đậm cho tiêu đề phụ */
             --sky-blue: #1E3A8A;     /* Xanh dương đậm tương phản sắc sảo */
-            --daisy-pink: #E08F8F;   /* Hồng cúc cosmos ấm áp */
+            --daisy-pink: #E89F9F;   /* Hồng cúc cosmos ấm áp */
             --pale-pink: #FFF0F2;
             --sun-yellow: #D9A02B;   /* Vàng ấm đậm đà */
             --pure-white: #FFFFFF;
@@ -24,10 +24,10 @@
             --capsule-radius: 50px;
             --card-radius: 28px;
             
-            /* KHỐI GLASS TRONG SUỐT HƠN */
+            /* KHỐI GLASS TRONG SUỐT */
             --glass-bg: rgba(255, 255, 255, 0.42); 
             --glass-border: rgba(255, 255, 255, 0.5);
-            --glass-blur: blur(30px) saturate(125%);
+            --glass-blur: blur(25px) saturate(120%);
             
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             --shadow: 0 15px 40px rgba(11, 25, 17, 0.12);
@@ -241,7 +241,6 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        /* Tên không dùng xưng hô cá nhân, tương phản sắc nét */
         .hero-name {
             font-size: clamp(2.4rem, 4vw, 3.4rem);
             font-weight: 700;
@@ -293,6 +292,7 @@
             color: var(--daisy-pink);
         }
 
+        /* PHẦN ẢNH: Mở rộng diện tích để hiển thị ảnh ngang Full Size lộng lẫy */
         .hero-image-wrapper {
             flex: 1.25;
             display: flex;
@@ -302,6 +302,7 @@
             width: 100%;
         }
 
+        /* Thẻ ảnh ngang bo góc nhẹ mờ sương đục */
         .hero-avatar-card {
             background: var(--glass-bg);
             backdrop-filter: var(--glass-blur);
@@ -322,6 +323,7 @@
             border-color: rgba(255, 255, 255, 0.8);
         }
 
+        /* Hiển thị Full Size trọn vẹn khung tranh hoa cúc */
         .hero-avatar {
             width: 100%;
             height: auto;
@@ -391,7 +393,7 @@
             gap: 22px;
         }
 
-        /* CHỮ NGOÀI NỀN: Chuyển sang màu trắng cùng bóng đổ mịn, đọc cực kỳ sắc sảo */
+        /* LỜI VĂN TỰ NHIÊN: Chuyển sang màu trắng cùng bóng đổ mịn, xưng hô "mình" mộc mạc và chân thành */
         .about-text p {
             font-size: 1.05rem;
             color: var(--pure-white);
@@ -476,13 +478,46 @@
             font-weight: 700;
         }
 
-        /* BỐ CỤC NÚT: Thiết lập cố định 3 nút trên, 3 nút dưới thông qua Grid */
+        /* Section Bài tập / Dự án cá nhân */
+        /* CÂN ĐỐI NÚT BÀI TẬP: Thiết lập lưới 3 cột hoàn chỉnh, cân 3 bài trên, 3 bài dưới */
         .portfolio-tabs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto 45px auto;
+        }
+
+        /* Nút chọn Tab */
+        .tab-btn {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            color: var(--leaf-green);
+            padding: 12px 26px;
+            border-radius: var(--capsule-radius);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--leaf-green);
+            color: var(--forest-green);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--leaf-green) 0%, var(--sky-blue) 100%);
+            color: var(--pure-white);
+            font-weight: 700;
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(79, 121, 86, 0.25);
         }
 
         /* Khung hiển thị nội dung bài tập */
@@ -584,7 +619,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* SỬA LỖI MẤT SỐ: Di chuyển tọa độ vào sâu bên trong thẻ để số hiển thị nguyên vẹn */
+        /* SỬA LỖI MẤT SỐ: Cố định vị trí nằm gọn trong khung không bị cắt rìa */
         .visual-accent-1 {
             position: absolute;
             top: 15px;
@@ -836,27 +871,104 @@
             display: none;
         }
 
-        /* SỬA LỖI CHÂN TRANG: Cố định màu nền đục tối hoàn toàn và đổi chữ màu kem tương phản tuyệt đối */
-        footer {
-            background-color: #0c1a12 !important; /* Màu lục sương đêm nguyên khối, đục hoàn toàn */
-            color: #FFFFFF !important;
-            padding: 70px 8% 45px 8%;
+        /* Section Tổng kết (Reflection) */
+        .reflection-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: 40px;
+            padding: 55px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 45px;
+        }
+
+        .reflection-essay {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .reflection-essay p {
+            font-size: 1.05rem;
+            color: var(--pure-white);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+            text-align: justify;
+            line-height: 1.75;
+            font-weight: 600;
+        }
+
+        .reflection-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 28px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--glass-border);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-            z-index: 10; /* Chặn hoàn toàn ảnh nền đè lên */
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-box:hover {
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.02);
+        }
+
+        .stat-num {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--leaf-green);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 6px;
+        }
+
+        .stat-desc {
+            font-size: 0.85rem;
+            color: var(--forest-green);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        /* Chân trang */
+        footer {
+            /* TỐI ƯU CHÂN TRANG: Tăng độ mờ đục cao và sử dụng màu chữ trắng sáng để giải quyết lỗi tương phản hiển thị */
+            background-color: rgba(11, 23, 15, 0.97); 
+            backdrop-filter: blur(25px);
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 60px 8% 40px 8%;
+            text-align: center;
         }
 
         .footer-logo {
-            font-family: 'Fraunces', serif;
             font-size: 1.9rem;
-            color: var(--pure-white) !important;
+            color: var(--pure-white);
             margin-bottom: 18px;
             font-weight: 700;
         }
 
         .footer-logo span {
-            color: var(--daisy-pink) !important;
+            color: var(--daisy-pink);
         }
 
         .footer-info {
@@ -864,7 +976,7 @@
             margin: 0 auto 35px auto;
             font-size: 0.95rem;
             line-height: 1.7;
-            color: #C1D0C6 !important; /* Màu lục nhạt dịu mắt và cực dễ đọc */
+            color: #C1D0C6;
         }
 
         .footer-divider {
@@ -881,10 +993,7 @@
             font-size: 0.85rem;
             flex-wrap: wrap;
             gap: 15px;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Thích ứng thiết bị di động */
@@ -917,17 +1026,30 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Điều chỉnh tab trên tablet/mobile */
             .portfolio-tabs {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .portfolio-tabs {
                 grid-template-columns: 1fr;
-                gap: 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 25px;
+                width: 95%;
+            }
+            nav {
+                display: none;
+            }
+            .section {
+                padding: 70px 5%;
+            }
+            .assignment-display {
+                padding: 30px;
             }
         }
     </style>
@@ -956,13 +1078,12 @@
             <div class="hero-tag">
                 <span>🌸</span> HỌC PHẦN CÔNG NGHỆ SỐ & AI
             </div>
-            <!-- Tên hiển thị to, rõ nét thẫm màu nổi bật -->
             <h1 class="hero-name">
                 Hán Nguyễn<br><span>Thuỳ Dung</span>
             </h1>
             <p class="hero-title">Sinh viên Ngôn ngữ & Văn hoá Nhật Bản</p>
             <p class="hero-desc">
-                Trang thông tin Digital Portfolio cá nhân lưu trữ, hệ thống hóa và tự đánh giá các kết quả thực hành học thuật về ứng dụng công nghệ số và trí tuệ nhân tạo của sinh viên.
+                Chào mừng bạn tới Digital Portfolio cá nhân của mình. Đây là nơi lưu giữ, hệ thống hóa và nhìn nhận lại những nỗ lực nghiên cứu, học tập và ứng dụng công nghệ trí tuệ nhân tạo có trách nhiệm trong hành trình học tập số.
             </p>
             
             <div class="hero-meta">
@@ -981,7 +1102,6 @@
         <div class="hero-image-wrapper">
             <div class="hero-avatar-card">
                 <div class="tape"></div>
-                <!-- Avatar hiển thị Full Size ngang không bị xén tỉ lệ dọc -->
                 <img src="Hình 1.jpg" alt="Avatar Hán Nguyễn Thuỳ Dung" class="hero-avatar">
             </div>
         </div>
@@ -997,13 +1117,13 @@
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    Hán Nguyễn Thuỳ Dung hiện đang là sinh viên chuyên ngành Ngôn ngữ và Văn hoá Nhật Bản tại Trường Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội. Học tập trong kỷ nguyên chuyển đổi số đem lại cả cơ hội lớn lẫn thách thức, đòi hỏi người học ngôn ngữ không chỉ hiểu biết về văn hóa truyền thống mà còn phải làm chủ các công cụ hỗ trợ thông minh.
+                    Mình hiện đang là sinh viên chuyên ngành Ngôn ngữ và Văn hoá Nhật Bản tại Trường Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội. Sinh ra và học tập trong kỷ nguyên chuyển đổi số, mình luôn tự nhủ rằng ngôn ngữ không chỉ là một công cụ giao lưu văn hóa thuần túy, mà cần phải được nuôi dưỡng bằng sức mạnh của công nghệ hiện đại để mở ra cánh cửa tri thức bản địa rộng lớn hơn.
                 </p>
                 <p>
                     <strong>🎯 Mục tiêu học tập cá nhân:</strong> Không ngừng làm chủ các kỹ năng số thiết yếu, xây dựng thói quen quản trị dữ liệu học thuật khoa học và tìm hiểu cách ứng dụng hệ sinh thái Generative AI như một "người đồng hành thông minh" để tối ưu hóa hiệu năng dịch thuật, tra cứu và nghiên cứu văn hóa Nhật Bản.
                 </p>
                 <p>
-                    <strong>🚀 Định hướng phát triển tương lai:</strong> Trở thành một chuyên gia ngôn ngữ Nhật Bản năng động, biết tích hợp tư duy công nghệ để phát triển các phương pháp giảng dạy hiện đại, dịch thuật tự nhiên và tiếp cận trực tiếp nguồn tài nguyên tri thức số chất lượng cao từ Nhật Bản.
+                    <strong>🚀 Định hướng phát triển tương lai:</strong> Trở thành một chuyên gia ngôn ngữ Nhật Bản năng động, biết tích hợp tư duy công nghệ để phát triển các phương pháp giảng dạy hiện đại, dịch thuật tự nhiên và tiếp cận trực tiếp nguồn tài nguyên tri thức số chất lượng cao từ đất nước Mặt Trời Mọc.
                 </p>
             </div>
 
@@ -1011,7 +1131,7 @@
                 <div class="about-card">
                     <span class="about-card-icon">🇯🇵</span>
                     <h3 class="about-card-title">Ngôn ngữ Nhật</h3>
-                    <p class="about-card-desc">Khám phá chiều sâu văn hóa và xã hội Nhật Bản thông qua lăng kính công nghệ hiện đại.</p>
+                    <p class="about-card-desc">Khám phá chiều sâu văn hóa và xã hội Nhật Bản thông qua lăng kính công nghệ của mình.</p>
                 </div>
                 <div class="about-card">
                     <span class="about-card-icon">🧠</span>
@@ -1021,7 +1141,7 @@
                 <div class="about-card">
                     <span class="about-card-icon">🤝</span>
                     <h3 class="about-card-title">Hợp tác đám mây</h3>
-                    <p class="about-card-desc">Làm việc nhóm đồng bộ và quản lý tiến độ khoa học thông qua đám mây dữ liệu.</p>
+                    <p class="about-card-desc">Làm việc nhóm đồng bộ và quản lý tiến độ khoa học thông qua đám mây.</p>
                 </div>
                 <div class="about-card">
                     <span class="about-card-icon">🛡️</span>
@@ -1039,16 +1159,16 @@
             <h2 class="section-title">Dự án & Bài thực hành</h2>
         </div>
 
-        <!-- Banner kêu gọi hành động Google Drive trước phần Bài tập theo yêu cầu -->
+        <!-- Banner kêu gọi hành động Google Drive trước phần Bài tập -->
         <div class="cta-banner">
             <h3>📂 Không gian Học tập Google Drive</h3>
-            <p>Để đánh giá toàn bộ cấu trúc thư mục thực nghiệm, dữ liệu thô, báo cáo cá nhân và kịch bản slide đầy đủ, mời bạn truy cập trực tiếp vào không gian lưu trữ học tập của tôi.</p>
+            <p>Để đánh giá toàn bộ cấu trúc thư mục thực nghiệm, dữ liệu thô, báo cáo cá nhân và kịch bản slide đầy đủ, mời bạn truy cập trực tiếp vào không gian lưu trữ học tập của mình.</p>
             <a href="https://drive.google.com/drive/folders/1GVH95kGkNFcrXslbkO941jVvzftgLxwu?usp=drive_link" target="_blank" class="btn-drive">
                 Xem bài tập trên GG drive
             </a>
         </div>
 
-        <!-- Các Tab Bài tập: Cố định 3 nút trên, 3 nút dưới -->
+        <!-- Các Tab Bài tập (LƯỚI CÂN ĐỐI 3 TRÊN 3 DƯỚI) -->
         <div class="portfolio-tabs">
             <button class="tab-btn active" onclick="switchTab(event, 'assignment-1')">Bài 1: Tổ chức file</button>
             <button class="tab-btn" onclick="switchTab(event, 'assignment-2')">Bài 2: Nghiên cứu Onsen</button>
@@ -1069,30 +1189,30 @@
                     
                     <div class="assignment-block">
                         <div class="block-title">📌 Mục tiêu bài tập</div>
-                        <div class="block-text">Hình thành thói quen quản trị dữ liệu số khoa học. Thiết lập một cấu trúc cây thư mục logic, mạch lạc trên máy tính cá nhân để chuẩn bị không gian lưu trữ học tập tối ưu, giúp việc truy xuất diễn ra nhanh chóng.</div>
+                        <div class="block-text">Hình thành thói quen quản trị dữ liệu số khoa học. Thiết lập một cấu trúc cây thư mục logic, mạch lạc trên máy tính cá nhân để chuẩn bị không gian lưu trữ tối ưu cho toàn bộ khóa học, giúp việc truy xuất và sao lưu dữ liệu diễn ra nhanh chóng.</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Sinh viên đã tiến hành quy hoạch ổ đĩa D máy tính cá nhân, khởi tạo thư mục gốc viết liền không dấu đúng chuẩn <code>Thuchanh_HanNguyenThuyDung</code>. Phân tách rõ rệt giữa thư mục chứa tài liệu học tập (<code>TaiLieu</code>) và tệp văn bản tiến độ, tránh hiện tượng thất lạc dữ liệu.</div>
+                        <div class="block-text">Mình tiến hành quy hoạch ổ đĩa D, tạo lập thư mục gốc viết liền không dấu đúng chuẩn <code>Thuchanh_HanNguyenThuyDung</code>. Tiếp đó, phân tách rõ rệt giữa thư mục chứa tài liệu tham khảo nghiên cứu (<code>TaiLieu</code>) và tệp văn bản quản trị tiến độ (<code>Ghichuquantrong.txt</code>, <code>DiChuyen.txt</code>).</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🌱 Bài học rút ra</div>
-                        <div class="block-text">Việc lưu trữ ngẫu hứng sẽ gây lãng phí lớn thời gian tìm kiếm thông tin về sau. Quy hoạch cấu trúc thư mục logic chính là nền móng tự học và tự quản lý thời gian số quan trọng nhất.</div>
+                        <div class="block-text">Việc lưu trữ ngẫu hứng, đặt tên tệp tùy tiện trên Desktop sẽ làm phân mảnh sự tập trung và lãng phí thời gian tìm kiếm. Quy hoạch cấu trúc thư mục logic ngay từ đầu chính là bước giải phóng không gian tư duy quan trọng nhất của mình.</div>
                     </div>
                 </div>
                 <div class="assignment-visual">
                     <span class="visual-accent-1">01</span>
-                    <h4 style="font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--leaf-green); margin-bottom: 5px;">Mô phỏng cây thư mục tương tác:</h4>
-                    <p style="font-size: 0.75rem; font-style: italic; color: var(--forest-green); margin-bottom: 10px;">(Hãy nhấp chuột vào thư mục màu vàng để mở/đóng tệp)</p>
+                    <h4 style="font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--leaf-green); margin-bottom: 5px;">Mô phỏng cấu trúc cây tương tác:</h4>
+                    <p style="font-size: 0.75rem; font-style: italic; color: var(--forest-green); margin-bottom: 10px;">(Hãy nhấp chuột vào thư mục màu vàng bên dưới để mở/đóng tệp)</p>
                     <div class="visual-card">
                         <div class="folder-tree">
                             <div class="folder-toggle" onclick="toggleTree(this, 'node-D')"> Ổ đĩa New Volume (D:)</div>
                             <div id="node-D" class="tree-node expanded">
                                 <div class="folder-toggle" onclick="toggleTree(this, 'node-Han')"> Thuchanh_HanNguyenThuyDung</div>
                                 <div id="node-Han" class="tree-node expanded">
-                                    <div class="folder-toggle" onclick="toggleTree(this, 'node-TaiLieu')"> TaiLieu (Thư mục tài liệu)</div>
+                                    <div class="folder-toggle" onclick="toggleTree(this, 'node-TaiLieu')"> TaiLieu (Chứa tài liệu thô)</div>
                                     <div id="node-TaiLieu" class="tree-node">
                                         <div>📄 Onsen_Culture_Japan.pdf</div>
                                         <div>📄 AI_in_Education_Note.docx</div>
@@ -1114,78 +1234,78 @@
                     
                     <div class="assignment-block">
                         <div class="block-title">📌 Mục tiêu bài tập</div>
-                        <div class="block-text">Sử dụng thành thạo các toán tử tìm kiếm chuyên sâu trên Google Scholar và xây dựng ma trận đánh giá uy tín nguồn tài liệu khoa học để phục vụ việc nghiên cứu đề tài: "Vai trò của Onsen trong giao tiếp xã hội ở Nhật Bản".</div>
+                        <div class="block-text">Sử dụng thành thạo các toán tử tìm kiếm chuyên sâu trên cơ sở dữ liệu học thuật Google Scholar. Đồng thời xây dựng ma trận đánh giá uy tín nguồn tài liệu để phục vụ việc nghiên cứu đề tài: "Vai trò của Onsen trong giao tiếp xã hội ở Nhật Bản".</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Tác giả áp dụng các toán tử tìm kiếm chính xác như <code>"onsen culture Japan"</code>, <code>"naked communication"</code> để sàng lọc tài nguyên học thuật. Từ đó, xây dựng bảng thẩm định đầy đủ cả 10 nguồn tài liệu tiêu biểu dựa trên phương pháp khoa học, uy tín tác giả và nhà xuất bản.</div>
+                        <div class="block-text">Mình áp dụng các toán tử tìm kiếm chính xác như <code>"onsen culture Japan"</code>, <code>"naked communication"</code>, <code>"social interaction"</code> để sàng lọc tài nguyên học thuật. Từ đó, xây dựng bảng thẩm định 10 nguồn tài liệu tiêu biểu dựa trên: phương pháp khoa học, tác giả, nơi xuất bản, số lượng trích dẫn và tính cập nhật.</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🌱 Bài học rút ra</div>
-                        <div class="block-text">Không phải thông tin nào trên Internet cũng đáng tin cậy. Việc phân tích và thẩm định nguồn lực giúp xây dựng nền móng kiến thức học thuật vững vàng, từ đó hỗ trợ nghiên cứu ngôn ngữ, văn hóa sâu sắc và khoa học hơn.</div>
+                        <div class="block-text">Không phải thông tin nào trên Internet cũng đáng tin cậy. Việc phân tích và lập bảng đối chiếu nguồn giúp mình xây dựng một nền móng kiến thức học thuật vững vàng, có kiểm chứng, từ đó tránh được các lỗi đạo văn vô ý.</div>
                     </div>
                 </div>
+                <!-- HIỂN THỊ ĐẦY ĐỦ 10 TÀI LIỆU KHÔNG THIẾU TÀI LIỆU NÀO -->
                 <div class="assignment-visual">
                     <span class="visual-accent-1">02</span>
-                    <h4 style="font-family: 'Fraunces', serif; font-size: 1rem; color: var(--leaf-green); margin-bottom: 5px;">Khảo sát 10 tài liệu học thuật gốc (Tương tác):</h4>
-                    <p style="font-size: 0.75rem; font-style: italic; color: var(--forest-green); margin-bottom: 5px;">(Hãy nhấp vào một tài liệu dưới đây để xem đánh giá chi tiết)</p>
-                    
-                    <!-- BẢNG TRÌNH BÀY ĐẦY ĐỦ CẢ 10 TÀI LIỆU -->
-                    <div style="max-height: 240px; overflow-y: auto; border: 1px solid rgba(79, 121, 86, 0.2); border-radius: 12px;">
+                    <h4 style="font-family: 'Fraunces', serif; font-size: 1rem; color: var(--leaf-green); margin-bottom: 5px;">Thẩm định đầy đủ 10 nguồn học thuật:</h4>
+                    <p style="font-size: 0.72rem; font-style: italic; color: var(--forest-green); margin-bottom: 5px;">(Hãy nhấp vào tài liệu bất kỳ để mở rộng thẩm định khoa học chi tiết)</p>
+                    <div style="max-height: 280px; overflow-y: auto; border: 1px solid rgba(79, 121, 86, 0.15); border-radius: 12px; padding: 5px; background: rgba(255,255,255,0.4);">
                         <table class="sources-table">
                             <thead>
                                 <tr>
+                                    <th>STT</th>
                                     <th>Tài liệu học thuật</th>
                                     <th>Độ tin cậy</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="source-row" onclick="showSourceDetail('src-1')">
-                                    <td>1. Clark (1994) - Japan: View from Bath</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-2')">
-                                    <td>2. Hadfield (2006) - Social Interaction</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-3')">
-                                    <td>3. Hendry (2012) - Japanese Society</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-4')">
-                                    <td>4. Koga (2013) - Meaning of Bathing</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-5')">
-                                    <td>5. Allison (1994) - Nightwork</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-6')">
-                                    <td>6. Ashkenazi (2000) - Food Culture</td>
-                                    <td><strong>Trung bình</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-7')">
-                                    <td>7. JNTO (2022) - Onsen in Japan</td>
-                                    <td><strong>Trung bình</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-8')">
-                                    <td>8. Nippon.com (2023) - Culture</td>
-                                    <td><strong>Trung bình</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-9')">
-                                    <td>9. Japan Guide (2023) - Guide</td>
-                                    <td><strong>Trung bình</strong></td>
-                                </tr>
-                                <tr class="source-row" onclick="showSourceDetail('src-10')">
-                                    <td>10. Rothbaum (2000) - Human Development</td>
-                                    <td><strong>Cao</strong></td>
-                                </tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-1')"><td>1</td><td>Clark (1994) - Japan: View from Bath</td><td>Cao</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-2')"><td>2</td><td>Hadfield (2006) - Social Interaction</td><td>Cao</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-3')"><td>3</td><td>Hendry (2012) - Japanese Society</td><td>Cao</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-4')"><td>4</td><td>Koga (2013) - Meaning of Bathing</td><td>Cao</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-5')"><td>5</td><td>Allison (1994) - Nightwork</td><td>Cao</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-6')"><td>6</td><td>Ashkenazi (2000) - Food Culture</td><td>Trung bình</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-7')"><td>7</td><td>JNTO - Onsen in Japan Web</td><td>Trung bình</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-8')"><td>8</td><td>Nippon.com - Japanese Articles</td><td>Trung bình</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-9')"><td>9</td><td>Japan Guide - Onsen Guide</td><td>Trung bình</td></tr>
+                                <tr class="source-row" onclick="showSourceDetail('src-10')"><td>10</td><td>Rothbaum (2000) - Cultural nature</td><td>Cao</td></tr>
                             </tbody>
                         </table>
                     </div>
-                    <div id="source-detail-container" class="source-detail-box" style="display: none;"></div>
+                    <!-- Khung lật mở chi tiết hiển thị tự động bằng JS bên dưới -->
+                    <div id="src-1" class="source-detail-box" style="display:block;">
+                        <strong>1. Clark (1994) [Cao]:</strong> Nghiên cứu xã hội học kinh điển về tắm chung ở Nhật. Phương pháp thực chứng rõ ràng, trích dẫn nhiều, uy tín học thuật cao.
+                    </div>
+                    <div id="src-2" class="source-detail-box">
+                        <strong>2. Hadfield (2006) [Cao]:</strong> Phân tích sâu sắc về giao tiếp xã hội thực tế tại Nhật Bản, làm nổi bật vai trò Onsen trong kết nối phi chính thức.
+                    </div>
+                    <div id="src-3" class="source-detail-box">
+                        <strong>3. Hendry (2012) [Cao]:</strong> Sách chuyên khảo cung cấp khung lý thuyết lý luận rất vững chắc về cấu trúc xã hội Nhật Bản hiện đại.
+                    </div>
+                    <div id="src-4" class="source-detail-box">
+                        <strong>4. Koga (2013) [Cao]:</strong> Bài báo khoa học khảo cứu chuyên sâu về mặt ý nghĩa văn hóa của hoạt động tắm chung Onsen ở thời kỳ đổi mới.
+                    </div>
+                    <div id="src-5" class="source-detail-box">
+                        <strong>5. Allison (1994) [Cao]:</strong> Khảo sát văn hóa và tâm lý hành vi giao tiếp không rào cản trong các sinh hoạt thư giãn cộng đồng Nhật Bản.
+                    </div>
+                    <div id="src-6" class="source-detail-box">
+                        <strong>6. Ashkenazi (2000) [Trung bình]:</strong> Nội dung cung cấp cái nhìn mộc mạc tuy nhiên một số khảo sát xã hội học thực tế đã hơi cũ so với các tài liệu mới.
+                    </div>
+                    <div id="src-7" class="source-detail-box">
+                        <strong>7. JNTO [Trung bình]:</strong> Chuyên trang Cơ quan Du lịch Quốc gia Nhật. Thông tin chính thống, dễ tiếp cận nhưng mang tính quảng bá du lịch hơn là nghiên cứu.
+                    </div>
+                    <div id="src-8" class="source-detail-box">
+                        <strong>8. Nippon.com [Trung bình]:</strong> Bài viết phổ quát, gần gũi với đại chúng, độ xác thực thực tiễn cao nhưng tính hàn lâm học thuật chưa sâu.
+                    </div>
+                    <div id="src-9" class="source-detail-box">
+                        <strong>9. Japan Guide [Trung bình]:</strong> Hướng dẫn hành vi ứng xử thực tế tại Onsen rất bổ ích nhưng chỉ mang tính chất cẩm nang trải nghiệm trực quan.
+                    </div>
+                    <div id="src-10" class="source-detail-box">
+                        <strong>10. Rothbaum (2000) [Cao]:</strong> Có phương pháp khoa học chặt chẽ, trích dẫn học thuật đầy đủ về tâm lý phát triển và khác biệt hành vi văn hóa.
+                    </div>
                 </div>
             </div>
 
@@ -1197,17 +1317,17 @@
                     
                     <div class="assignment-block">
                         <div class="block-title">📌 Mục tiêu bài tập</div>
-                        <div class="block-text">Làm chủ kỹ thuật thiết kế Prompt (Prompt Engineering) để tương tác hiệu quả với các mô hình ngôn ngữ lớn (LLM). Thực nghiệm tóm tắt tài liệu khoa học, giải thích khái niệm học thuật và tạo đề ôn tập Lịch sử.</div>
+                        <div class="block-text">Làm chủ kỹ thuật thiết kế Prompt (Prompt Engineering) để tương tác hiệu quả với các mô hình ngôn ngữ lớn (LLM). Thực nghiệm tóm tắt tài liệu khoa học, giải thích khái niệm học thuật và khởi tạo bộ đề ôn tập Lịch sử.</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Tác giả thực hiện thử nghiệm so sánh 3 cấp độ câu lệnh: Cơ bản (thiếu chiều sâu), Cải tiến (bổ sung từ khóa giới hạn) và Nâng cao (quy định rõ vai trò chuyên gia, các bước phân tích Chain-of-thought và điều chỉnh văn phong theo từng đối tượng người đọc).</div>
+                        <div class="block-text">Mình thực hiện thử nghiệm so sánh 3 cấp độ câu lệnh: Cơ bản (thiếu chiều sâu), Cải tiến (bổ sung từ khóa giới hạn) và Nâng cao (quy định rõ vai trò chuyên gia, các bước phân tích Chain-of-thought và điều chỉnh văn phong theo từng đối tượng người đọc).</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🌱 Bài học rút ra</div>
-                        <div class="block-text">Chất lượng câu trả lời của AI phản ánh năng lực tư duy đặt vấn đề của con người. Prompt càng chi tiết, có cấu trúc phân vai và ràng buộc rõ ràng thì AI phản hồi càng chính xác và hữu dụng.</div>
+                        <div class="block-text">Chất lượng câu trả lời của AI phản ánh trực tiếp năng lực tư duy, đặt vấn đề của con người. Prompt càng chi tiết, có cấu trúc phân vai và ràng buộc rõ ràng thì AI phản hồi càng chính xác và hữu dụng cho mình.</div>
                     </div>
                 </div>
                 <div class="assignment-visual">
@@ -1222,7 +1342,7 @@
                         </div>
                         <div id="sim-window" class="sim-window">
                             <strong>Prompt cơ bản:</strong> "Giải thích AI là gì."<br><br>
-                            <strong>AI phản hồi:</strong> AI là trí tuệ nhân tạo mô phỏng bộ não con người... (Khá đơn điệu, ngôn từ học thuật khô khan, thiếu ví dụ cụ thể).
+                            <strong>AI phản hồi:</strong> AI là trí tuệ nhân tạo do con người tạo ra để mô phỏng suy nghĩ của con người... (Khá ngắn gọn, chung chung và thiếu ví dụ thực tế).
                         </div>
                     </div>
                 </div>
@@ -1241,12 +1361,12 @@
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Nhóm thực hiện cùng xây dựng đề tài về "Ứng dụng trí tuệ nhân tạo trong giáo dục và ngoại ngữ". Cá nhân sinh viên chịu trách nhiệm tìm kiếm tài liệu, biên soạn nội dung, ghi chú tiến độ tuần tự và lưu trữ hệ thống trong nhật ký 7 ngày.</div>
+                        <div class="block-text">Nhóm mình cùng xây dựng đề tài về "Ứng dụng trí tuệ nhân tạo trong giáo dục và ngoại ngữ". Cá nhân mình chịu trách nhiệm tìm kiếm tài liệu, biên soạn nội dung, ghi chú tiến độ tuần tự và lưu trữ có hệ thống trong suốt nhật ký 7 ngày.</div>
                     </div>
 
                     <div class="assignment-block">
                         <div class="block-title">🌱 Bài học rút ra</div>
-                        <div class="block-text">Làm việc nhóm online khó nhất không phải ở công cụ, mà là việc quản lý thời gian đồng nhất giữa các thành viên. Khai thác sức mạnh đồng bộ đám mây giúp giảm thiểu tối đa sai lệch thông tin.</div>
+                        <div class="block-text">Làm việc nhóm online khó nhất không phải ở công cụ, mà là việc quản lý thời gian đồng nhất giữa các thành viên. Khai thác sức mạnh đồng bộ đám mây giúp giảm thiểu sai lệch thông tin và tối ưu hóa năng suất tập thể.</div>
                     </div>
                 </div>
                 <div class="assignment-visual">
@@ -1261,7 +1381,7 @@
                             <button class="j-tab" onclick="flipJournal(this, 'day-7')">Ngày 7</button>
                         </div>
                         <div id="journal-content" class="journal-page-content">
-                            <strong>Ngày 1:</strong> Phân chia danh mục công việc với đồng đội. Thiết lập không gian lưu trữ chung trên Google Drive cá nhân, tạo bảng theo dõi mục tiêu hoàn thành trên Microsoft OneNote.
+                            <strong>Ngày 1:</strong> Nhận nhiệm vụ tìm kiếm tài liệu từ nhóm trưởng. Thiết lập thư mục chia sẻ chung trên Google Drive cá nhân, tạo danh mục công việc cần hoàn thành trên OneNote của mình.
                         </div>
                     </div>
                 </div>
@@ -1280,7 +1400,7 @@
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Tác giả dùng ChatGPT lên cấu trúc 5 slide chi tiết; dùng DALL-E phác họa hình ảnh ổ bánh mì thịt nướng tả thực đầy sống động; và ứng dụng Canva AI để đồng bộ hóa màu sắc thiết kế và chuyển đổi bố cục slide tự động.</div>
+                        <div class="block-text">Mình dùng ChatGPT lên cấu trúc 5 slide chi tiết; dùng DALL-E phác họa hình ảnh ổ bánh mì thịt nướng tả thực đầy sống động; và ứng dụng Canva AI để đồng bộ hóa màu sắc thiết kế và chuyển đổi bố cục slide tự động theo ý muốn.</div>
                     </div>
 
                     <div class="assignment-block">
@@ -1319,7 +1439,7 @@
 
                     <div class="assignment-block">
                         <div class="block-title">🛠️ Tóm tắt quá trình thực hiện</div>
-                        <div class="block-text">Sinh viên thực hiện phân tích ba nội dung trọng tâm trong chính sách của VNU (minh bạch sử dụng, ngăn chặn hành vi gian lận sao chép nguyên văn, tự kiểm chứng độ tin cậy thông tin). Từ đó, đề xuất quy chuẩn trích dẫn AI chuẩn APA 7 và lập bộ nguyên tắc hành động thực tế.</div>
+                        <div class="block-text">Mình tiến hành phân tích ba nội dung trọng tâm trong chính sách của VNU (minh bạch sử dụng, ngăn chặn hành vi gian lận sao chép nguyên văn, tự kiểm chứng độ tin cậy thông tin). Từ đó, tự đề xuất bộ quy tắc ứng xử cá nhân và thiết kế infographic trực quan.</div>
                     </div>
 
                     <div class="assignment-block">
@@ -1366,13 +1486,13 @@
             <div class="reflection-grid">
                 <div class="reflection-essay">
                     <p>
-                        Nhìn nhận lại chặng đường hoàn thiện các bài thực hành học thuật trong tuần vừa qua, sinh viên đã rút ra được nhiều bài học quan trọng vượt ngoài mong đợi. Công nghệ số hay trí tuệ nhân tạo suy cho cùng chỉ là phương tiện bổ trợ, còn <strong>tư duy định hướng, sự trung thực và tính sáng tạo mang bản sắc cá nhân mới là yếu tố tạo nên giá trị cốt lõi</strong> của một sản phẩm nghiên cứu.
+                        Nhìn nhận lại chặng đường hoàn thiện các bài thực hành học thuật trong tuần vừa qua, mình đã tích lũy được nhiều bài học quan trọng vượt ngoài mong đợi. Công nghệ số hay trí tuệ nhân tạo suy cho cùng chỉ là phương tiện bổ trợ, còn <strong>tư duy định hướng, sự trung thực và tính sáng tạo mang bản sắc cá nhân mới là yếu tố tạo nên giá trị cốt lõi</strong> của một sản phẩm nghiên cứu.
                     </p>
                     <p>
-                        Khi bắt đầu, sinh viên gặp không ít khó khăn trong việc tổ chức quản lý tệp tin một cách có hệ thống, hoặc lúng túng khi viết những câu lệnh (prompt) còn mơ hồ khiến AI đưa ra phản hồi sai mục tiêu. Tuy nhiên, bằng cách kiên trì tối ưu hóa phương pháp học tập, chia nhỏ nhiệm vụ và học cách phối hợp các nền tảng số, sinh viên đã cải thiện đáng kể năng suất nghiên cứu của bản thân.
+                        Từ những bỡ ngỡ ban đầu khi thiết kế prompt hay loay hoay sắp xếp tệp tin sao cho khoa học, mình đã dần hình thành kỹ năng tự nghiên cứu, biết phản biện và kiểm chứng nghiêm túc mọi thông tin do AI cung cấp. Việc sử dụng các công cụ đúng mục đích giúp mình tiết kiệm thời gian, tăng năng suất xử lý dữ liệu liên quan đến văn hóa và ngôn ngữ Nhật Bản.
                     </p>
                     <p>
-                        Việc ứng dụng AI một cách có đạo đức không chỉ giúp sinh viên tiết kiệm thời gian tổng hợp tài liệu về văn hóa Nhật Bản mà còn kích thích tư duy đa chiều của người học. Trong tương lai, sinh viên mong muốn sẽ tiếp tục khai thác hiệu quả các công cụ số này để phục vụ tốt hơn cho chặng đường học tập sắp tới.
+                        Với tư cách là một sinh viên chuyên ngành Ngôn ngữ và Văn hóa Nhật Bản, mình cam kết sẽ tiếp tục duy trì thói quen học tập có đạo đức, tận dụng công nghệ có trách nhiệm để hỗ trợ con đường học tập, phát triển bản thân lâu dài sau này.
                     </p>
                 </div>
 
@@ -1392,12 +1512,12 @@
         </div>
     </section>
 
-    <!-- Chân trang (Footer) -->
+    <!-- Chân trang -->
     <footer>
         <div class="footer-logo">HNTD<span>.</span></div>
         <p class="footer-info">
-            Trang Digital Portfolio được xây dựng bởi sinh viên Hán Nguyễn Thuỳ Dung.<br>
-            Ngành Ngôn ngữ và Văn hoá Nhật Bản - Trường Đại học Ngoại ngữ - ĐHQGHN.
+            Trang Digital Portfolio này được xây dựng một cách trọn vẹn bởi sinh viên Hán Nguyễn Thuỳ Dung.<br>
+            Sinh viên chuyên ngành Ngôn ngữ và Văn hoá Nhật Bản - Trường Đại học Ngoại ngữ - ĐHQGHN.
         </p>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
@@ -1501,30 +1621,32 @@
             }
         }
 
-        // Bài 2: Hiển thị chi tiết thẩm định tài liệu cho cả 10 tài liệu
-        const sourceNotes = {
-            'src-1': `<strong>Đánh giá Clark (1994):</strong> Nghiên cứu học thuật kinh điển về hoạt động tắm chung tại Nhật. Khai thác sâu sắc cấu trúc xã hội, được trích dẫn rất nhiều trong các luận án chuyên môn.`,
-            'src-2': `<strong>Đánh giá Hadfield (2006):</strong> Phân tích sắc sảo về hành vi tương tác xã hội và giao tiếp phi chính thức ngoài đời thực của người Nhật trong không gian Onsen.`,
-            'src-3': `<strong>Đánh giá Hendry (2012):</strong> Chuyên khảo cung cấp nền tảng lý thuyết vững chắc về văn hóa, giao tiếp xã hội và tôn ti trật tự trong đời sống Nhật Bản hiện đại.`,
-            'src-4': `<strong>Đánh giá Koga (2013):</strong> Khảo sát thực chứng chuyên sâu làm rõ ý nghĩa biểu tượng tâm lý và hành vi gắn kết xã hội của người Nhật Bản thông qua Onsen.`,
-            'src-5': `<strong>Đánh giá Allison (1994):</strong> Công trình nhân học uy tín phân tích cấu trúc hành vi, tính cộng đồng và văn hóa đặc thù của người Nhật dưới lăng kính nhân học.`,
-            'src-6': `<strong>Đánh giá Ashkenazi (2000):</strong> Sách lý thuyết sâu sắc về văn hóa ẩm thực Nhật Bản. Một số số liệu phân tích xã hội đã hơi cũ so với bối cảnh hiện nay nhưng độ tin cậy nền tảng vẫn rất cao.`,
-            'src-7': `<strong>Đánh giá JNTO (2022):</strong> Kênh thông tin từ Cơ quan Du lịch Quốc gia Nhật Bản. Cực kỳ chính xác về mặt chỉ dẫn địa lý và thông tin thực tế, nhưng thiên về quảng bá du lịch.`,
-            'src-8': `<strong>Đánh giá Nippon.com (2023):</strong> Chuyên trang nghiên cứu văn hóa Nhật đương đại. Độ cập nhật thông tin xã hội xuất sắc, độ tin cậy khá cao để làm tư liệu thực tiễn bổ trợ.`,
-            'src-9': `<strong>Đánh giá Japan Guide (2023):</strong> Cổng thông tin trải nghiệm du lịch thực tế. Cung cấp dữ liệu chỉ dẫn chính xác và trực quan, hỗ trợ tốt cho việc nghiên cứu thực nghiệm.`,
-            'src-10': `<strong>Đánh giá Rothbaum (2000):</strong> Nghiên cứu tâm lý học phát triển dựa trên các yếu tố văn hóa truyền thống định hình nên hành vi giao tiếp tập thể của người Nhật.`
+        // Bài 2: Hiển thị chi tiết thẩm định tài liệu (TƯƠNG TÁC ĐẦY ĐỦ 10 NGUỒN)
+        const sourceEvaluations = {
+            'src-1': '<strong>1. Clark (1994) [Cao]:</strong> Nghiên cứu xã hội học kinh điển về tắm chung ở Nhật. Phương pháp thực chứng rõ ràng, trích dẫn nhiều, uy tín học thuật cao.',
+            'src-2': '<strong>2. Hadfield (2006) [Cao]:</strong> Phân tích sâu sắc về giao tiếp xã hội thực tế tại Nhật Bản, làm nổi bật vai trò Onsen trong kết nối phi chính thức.',
+            'src-3': '<strong>3. Hendry (2012) [Cao]:</strong> Sách chuyên khảo cung cấp khung lý thuyết lý luận rất vững chắc về cấu trúc xã hội Nhật Bản hiện đại.',
+            'src-4': '<strong>4. Koga (2013) [Cao]:</strong> Bài báo khoa học khảo cứu chuyên sâu về mặt ý nghĩa văn hóa của hoạt động tắm chung Onsen ở thời kỳ đổi mới.',
+            'src-5': '<strong>5. Allison (1994) [Cao]:</strong> Khảo sát văn hóa và tâm lý hành vi giao tiếp không rào cản trong các sinh hoạt thư giãn cộng đồng Nhật Bản.',
+            'src-6': '<strong>6. Ashkenazi (2000) [Trung bình]:</strong> Nội dung cung cấp cái nhìn mộc mạc tuy nhiên một số khảo sát xã hội học thực tế đã hơi cũ so với các tài liệu mới.',
+            'src-7': '<strong>7. JNTO [Trung bình]:</strong> Chuyên trang Cơ quan Du lịch Quốc gia Nhật. Thông tin chính thống, dễ tiếp cận nhưng mang tính quảng bá du lịch hơn là nghiên cứu.',
+            'src-8': '<strong>8. Nippon.com [Trung bình]:</strong> Bài viết phổ quát, gần gũi với đại chúng, độ xác thực thực tiễn cao nhưng tính hàn lâm học thuật chưa sâu.',
+            'src-9': '<strong>9. Japan Guide [Trung bình]:</strong> Hướng dẫn hành vi ứng xử thực tế tại Onsen rất bổ ích nhưng chỉ mang tính chất cẩm nang trải nghiệm trực quan.',
+            'src-10': '<strong>10. Rothbaum (2000) [Cao]:</strong> Có phương pháp khoa học chặt chẽ, trích dẫn học thuật đầy đủ về tâm lý phát triển và khác biệt hành vi văn hóa.'
         };
 
-        function showSourceDetail(boxId) {
-            let detailBox = document.getElementById('source-detail-container');
-            if (detailBox) {
-                detailBox.innerHTML = sourceNotes[boxId];
-                detailBox.style.display = 'block';
+        function showSourceDetail(srcKey) {
+            const boxes = document.querySelectorAll('.source-detail-box');
+            // Ẩn tất cả và hiển thị một box duy nhất cập nhật nội dung tương tác
+            boxes.forEach(box => {
+                box.style.display = 'none';
+            });
+            const firstBox = document.getElementById('src-1');
+            if (firstBox && sourceEvaluations[srcKey]) {
+                firstBox.innerHTML = sourceEvaluations[srcKey];
+                firstBox.style.display = 'block';
             }
         }
-
-        // Tự động mở tài liệu đầu tiên khi vào trang bài 2
-        showSourceDetail('src-1');
 
         // Bài 3: Giả lập kết quả Prompt AI
         const promptReplies = {
@@ -1546,7 +1668,7 @@
 
         // Bài 4: Lật nhật ký dự án nhóm
         const journalNotes = {
-            'day-1': `<strong>Ngày 1:</strong> Nhận nhiệm vụ từ nhóm trưởng. Thiết lập không gian lưu trữ chung trên Google Drive cá nhân, tạo danh mục công việc cần hoàn thành trên OneNote.`,
+            'day-1': `<strong>Ngày 1:</strong> Nhận nhiệm vụ tìm kiếm tài liệu từ nhóm trưởng. Thiết lập thư mục chia sẻ chung trên Google Drive cá nhân, tạo danh mục công việc cần hoàn thành trên OneNote của mình.`,
             'day-3': `<strong>Ngày 3:</strong> Tìm kiếm được 5 nguồn tài liệu tiếng Nhật uy tín về AI. Tiến hành phân loại trên Drive và bắt đầu viết bản thảo nội dung trang 1-2 trực tiếp trên Google Docs.`,
             'day-5': `<strong>Ngày 5:</strong> Xem lại lịch sử chỉnh sửa trên Google Docs để sửa các lỗi diễn đạt của đồng đội, đồng thời tiếp thu các đóng góp ý kiến thông qua tính năng bình luận trực tiếp.`,
             'day-7': `<strong>Ngày 7:</strong> Rà soát hoàn chỉnh tài liệu thuyết trình, liên kết minh chứng hoạt động và tổng hợp kết quả học tập để nộp báo cáo cá nhân đúng hạn.`
