@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hán Nguyễn Thuỳ Dung Portfolio</title>
+    <title>Digital Portfolio | Hán Nguyễn Thuỳ Dung</title>
     <!-- Google Fonts: Nunito cho nét chữ tròn trịa & Fraunces cho tiêu đề cổ điển kiểu Ghibli -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +12,10 @@
     <style>
         :root {
             /* Hệ màu tươi sáng từ khu vườn cúc họa mi nắng ấm */
-            --forest-green: #11261B; /* Tông lục tối để hiển thị chữ rõ nét trong các khối glass */
-            --leaf-green: #244A30;   /* Tông lục đậm cho tiêu đề phụ */
-            --sky-blue: #1E3A8A;     /* Xanh dương đậm tương phản sắc sảo */
-            --daisy-pink: #E89F9F;   /* Hồng cúc cosmos ấm áp */
+            --forest-green: #0A1E11; /* Tông lục rêu thẫm nhất cho độ tương phản chữ tuyệt đối */
+            --leaf-green: #1F4229;   /* Tông lục đậm cho tiêu đề phụ */
+            --sky-blue: #1A365D;     /* Xanh dương đậm tương phản sắc sảo */
+            --daisy-pink: #E08F8F;   /* Hồng cúc cosmos ấm áp */
             --pale-pink: #FFF0F2;
             --sun-yellow: #D9A02B;   /* Vàng ấm đậm đà */
             --pure-white: #FFFFFF;
@@ -24,9 +24,9 @@
             --capsule-radius: 50px;
             --card-radius: 28px;
             
-            /* KHỐI GLASS TRONG SUỐT */
-            --glass-bg: rgba(255, 255, 255, 0.42); 
-            --glass-border: rgba(255, 255, 255, 0.5);
+            /* KHỐI GLASS TRONG SUỐT THÊM 70%: Giảm opacity từ 0.42 xuống 0.13 để đạt độ trong vắt */
+            --glass-bg: rgba(255, 255, 255, 0.13); 
+            --glass-border: rgba(255, 255, 255, 0.35);
             --glass-blur: blur(25px) saturate(120%);
             
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -141,8 +141,8 @@
         header.scrolled {
             top: 10px;
             padding: 10px 30px;
-            background: rgba(255, 255, 255, 0.65);
-            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.45);
+            border-color: rgba(255, 255, 255, 0.7);
         }
 
         .logo {
@@ -230,7 +230,7 @@
         }
 
         .hero-tag {
-            background: rgba(79, 121, 86, 0.15);
+            background: rgba(255, 255, 255, 0.25);
             color: var(--forest-green);
             padding: 8px 18px;
             border-radius: var(--capsule-radius);
@@ -274,8 +274,8 @@
         }
 
         .meta-tag {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             padding: 10px 20px;
             border-radius: var(--capsule-radius);
             font-size: 0.85rem;
@@ -302,7 +302,7 @@
             width: 100%;
         }
 
-        /* Thẻ ảnh ngang bo góc nhẹ mờ sương đục */
+        /* Thẻ ảnh ngang bo góc nhẹ mờ sương trong suốt */
         .hero-avatar-card {
             background: var(--glass-bg);
             backdrop-filter: var(--glass-blur);
@@ -371,7 +371,7 @@
         }
 
         .section-subtitle {
-            color: var(--daisy-pink);
+            color: var(--pale-pink); /* Sắc hồng mộc mạc nổi bật ngoài nền ảnh */
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.85rem;
@@ -387,17 +387,24 @@
             align-items: center;
         }
 
+        /* BẢN THÂN CŨNG CHO VÀO BOX: Tạo hiệu ứng glass mờ trong suốt cao cấp */
         .about-text {
             display: flex;
             flex-direction: column;
             gap: 22px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            padding: 35px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
         }
 
-        /* LỜI VĂN TỰ NHIÊN: Chuyển sang màu trắng cùng bóng đổ mịn, xưng hô "mình" mộc mạc và chân thành */
+        /* Cập nhật màu chữ lục thẫm sắc nét bên trong hộp kính mờ */
         .about-text p {
             font-size: 1.05rem;
-            color: var(--pure-white);
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+            color: var(--forest-green);
             text-align: justify;
             line-height: 1.75;
             font-weight: 600;
@@ -555,6 +562,7 @@
         }
 
         .assignment-num {
+            font-family: 'Playfair Display', serif;
             font-size: 1.15rem;
             color: var(--sky-blue);
             font-weight: 700;
@@ -563,6 +571,7 @@
         }
 
         .assignment-title {
+            font-family: 'Playfair Display', serif;
             font-size: 2.3rem;
             color: var(--forest-green);
             line-height: 1.25;
@@ -578,10 +587,10 @@
 
         /* Các mục cấu trúc chi tiết: Mục tiêu, Quá trình, Bài học */
         .assignment-block {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             margin-bottom: 10px;
         }
 
@@ -606,7 +615,7 @@
 
         /* Khung visual của bài tập */
         .assignment-visual {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.35);
             border-radius: var(--card-radius);
             padding: 35px;
             border: 1px dashed var(--glass-border);
@@ -896,10 +905,10 @@
             gap: 22px;
         }
 
+        /* CHỮ TRONG BOX: Chuyển sang màu lục thẫm tương phản xuất sắc */
         .reflection-essay p {
             font-size: 1.05rem;
-            color: var(--pure-white);
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+            color: var(--forest-green);
             text-align: justify;
             line-height: 1.75;
             font-weight: 600;
@@ -913,7 +922,7 @@
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.4);
             padding: 28px;
             border-radius: var(--card-radius);
             border: 1px solid var(--glass-border);
@@ -923,7 +932,7 @@
         }
 
         .stat-box:hover {
-            border-color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.02);
         }
 
@@ -956,7 +965,7 @@
             backdrop-filter: blur(25px);
             border-top: 2px solid rgba(255, 255, 255, 0.15);
             color: rgba(255, 255, 255, 0.9);
-            padding: 60px 8% 40px 8%;
+            padding: 60px 8% 45px 8%;
             text-align: center;
         }
 
@@ -1115,6 +1124,7 @@
         </div>
 
         <div class="about-grid">
+            <!-- BẢN THÂN CŨNG CHO VÀO BOX: Tạo hiệu ứng glass mờ đục và trong suốt 70% tuyệt đẹp -->
             <div class="about-text">
                 <p>
                     Mình hiện đang là sinh viên chuyên ngành Ngôn ngữ và Văn hoá Nhật Bản tại Trường Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội. Sinh ra và học tập trong kỷ nguyên chuyển đổi số, mình luôn tự nhủ rằng ngôn ngữ không chỉ là một công cụ giao lưu văn hóa thuần túy, mà cần phải được nuôi dưỡng bằng sức mạnh của công nghệ hiện đại để mở ra cánh cửa tri thức bản địa rộng lớn hơn.
@@ -1628,7 +1638,7 @@
             'src-3': '<strong>3. Hendry (2012) [Cao]:</strong> Sách chuyên khảo cung cấp khung lý thuyết lý luận rất vững chắc về cấu trúc xã hội Nhật Bản hiện đại.',
             'src-4': '<strong>4. Koga (2013) [Cao]:</strong> Bài báo khoa học khảo cứu chuyên sâu về mặt ý nghĩa văn hóa của hoạt động tắm chung Onsen ở thời kỳ đổi mới.',
             'src-5': '<strong>5. Allison (1994) [Cao]:</strong> Khảo sát văn hóa và tâm lý hành vi giao tiếp không rào cản trong các sinh hoạt thư giãn cộng đồng Nhật Bản.',
-            'src-6': '<strong>6. Ashkenazi (2000) [Trung bình]:</strong> Nội dung cung cấp cái nhìn mộc mạc tuy nhiên một số khảo sát xã hội học thực tế đã hơi cũ so với các tài liệu mới.',
+            'src-6': '<strong>6. Ashkenazi (2000) [Trung bình]:</strong> Cung cấp cái nhìn mộc mạc tuy nhiên một số khảo sát xã hội học thực tế đã hơi cũ so với các tài liệu mới.',
             'src-7': '<strong>7. JNTO [Trung bình]:</strong> Chuyên trang Cơ quan Du lịch Quốc gia Nhật. Thông tin chính thống, dễ tiếp cận nhưng mang tính quảng bá du lịch hơn là nghiên cứu.',
             'src-8': '<strong>8. Nippon.com [Trung bình]:</strong> Bài viết phổ quát, gần gũi với đại chúng, độ xác thực thực tiễn cao nhưng tính hàn lâm học thuật chưa sâu.',
             'src-9': '<strong>9. Japan Guide [Trung bình]:</strong> Hướng dẫn hành vi ứng xử thực tế tại Onsen rất bổ ích nhưng chỉ mang tính chất cẩm nang trải nghiệm trực quan.',
@@ -1650,7 +1660,7 @@
 
         // Bài 3: Giả lập kết quả Prompt AI
         const promptReplies = {
-            basic: `<strong>Prompt cơ bản:</strong> "Giải thích AI là gì."<br><br><strong>AI phản hồi:</strong> AI là trí tuệ nhân tạo mô phỏng bộ não con người... (Khá đơn điệu, ngôn từ học thuật khô khan, thiếu ví dụ cụ thể).`,
+            basic: `<strong>Prompt cơ bản:</strong> "Giải thích AI là gì."<br><br><strong>AI phản hồi:</strong> AI là trí tuệ nhân tạo do con người tạo ra để mô phỏng suy nghĩ của con người... (Khá đơn điệu, ngôn từ học thuật khô khan, thiếu ví dụ cụ thể).`,
             improved: `<strong>Prompt cải tiến:</strong> "Hãy giải thích khái niệm trí tuệ nhân tạo (AI) cho học sinh cấp 3. Bao gồm định nghĩa, ví dụ thực tế..."<br><br><strong>AI phản hồi:</strong> AI giống như một bộ não thông minh giúp máy tính tự đưa ra quyết định. Ví dụ: Xe tự lái, trợ lý ảo Siri hay chatbot... (Câu chữ dễ hiểu, bám sát đối tượng).`,
             advanced: `<strong>Prompt nâng cao:</strong> "Bạn là giáo viên CNTT. Hãy giải thích trí tuệ nhân tạo theo trình tự: 1. Định nghĩa, 2. So sánh AI với con người..."<br><br><strong>AI phản hồi:</strong> Chào các em học sinh lớp 10! Thầy xin giới thiệu về AI theo mô hình so sánh giữa phản xạ máy tính với trí tuệ sinh học... (Văn phong mẫu mực, cấu trúc 5 bước hoàn chỉnh kèm tóm tắt ghi nhớ cuối bài).`
         };
@@ -1720,6 +1730,7 @@
             }
         }
 
+        // Bài 6: Lật xem nội dung chi tiết nguyên tắc đạo đức AI
         function nextSlide() {
             if (currentSlideIdx < slideData.length - 1) {
                 currentSlideIdx++;
@@ -1727,7 +1738,6 @@
             }
         }
 
-        // Bài 6: Lật xem nội dung chi tiết nguyên tắc đạo đức AI
         function flipPrincipleCard(card) {
             const desc = card.querySelector('.p-card-desc');
             if (desc) {
